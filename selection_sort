@@ -1,0 +1,67 @@
+/*简单选择排序*/
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+template<class T>
+void swap(int &a,int &b)
+{//交换两值
+	int temp;
+	temp=a;
+	a=b;
+	b=temp;
+}
+template<class T>
+T indexOFMax(T a[],int n)
+{
+	int indexOfMax=0; //假设最大值是第一个
+	for(int i=1;i<n;i++)
+	{
+		if(a[indexOfMax]<a[i])
+			indexOfMax=i;  //最大值位置
+	}
+	return indexOfMax;   //返回最大值位置
+}
+void selectionSort(int a[],int n)
+{
+	for(int size=n;size>0;size--)
+	{
+		int j=indexOFMax(a,size);//最大值
+		swap(a[j],a[size-1]);//最大值和最后一个值交换
+		for(int i=0;i<n;i++)
+		{
+			cout<<a[i]<<"      ";
+		}
+		cout<<endl<<endl;
+	}
+	
+}
+void main()
+{
+	int a[]={7,1,3,2,5,6,4,9,4,6,4};
+	selectionSort(a,11);
+}
+
+输出结果：
+7      1      3      2      5      6      4      4      4      6      9
+
+6      1      3      2      5      6      4      4      4      7      9
+
+4      1      3      2      5      6      4      4      6      7      9
+
+4      1      3      2      5      4      4      6      6      7      9
+
+4      1      3      2      4      4      5      6      6      7      9
+
+4      1      3      2      4      4      5      6      6      7      9
+
+4      1      3      2      4      4      5      6      6      7      9
+
+2      1      3      4      4      4      5      6      6      7      9
+
+2      1      3      4      4      4      5      6      6      7      9
+
+1      2      3      4      4      4      5      6      6      7      9
+
+1      2      3      4      4      4      5      6      6      7      9
+
+请按任意键继续. . .
